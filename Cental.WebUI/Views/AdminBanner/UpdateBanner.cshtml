@@ -1,0 +1,53 @@
+﻿@model UpdateBannerDto
+@{
+    ViewData["Title"] = "Update Banner";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var imageFileInput = document.getElementById("ImageFile");
+        var imagePreview = document.getElementById("imagePreview");
+
+        if (imageFileInput) {
+            imageFileInput.addEventListener("change", function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.classList.remove("d-none");
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+    });
+</script>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="BannerId" />
+
+    <div class="mb-3">
+        <label for="ImageFile" class="form-label fw-bold">Upload Image</label>
+        <input type="file" id="ImageFile" asp-for="ImageFile" name="ImageFile" accept="image/png, image/jpg, image/jpeg" class="form-control" />
+        <img id="imagePreview" src="" alt="Image Preview" class="img-fluid mt-2 d-none" style="max-height: 200px;" />
+    </div>
+
+    <div class="mb-3">
+        <label class="fw-bold">Current Image</label>
+        <div>
+            <img src="@Model.ImageUrl" alt="Current Image" class="img-thumbnail" style="width: 100px; height: 100px;" />
+        </div>
+    </div>
+    <label>Title</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Description</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+
+    
+    <button class="btn btn-outline-primary">Update</button>
+
+</form>
+

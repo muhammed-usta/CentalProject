@@ -1,0 +1,41 @@
+﻿@model UpdateContactDto
+@{
+    ViewData["Title"] = "Update Contact";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post">
+    <input type="hidden" asp-for="ContactId" />
+    <label>Adress</label>
+    <input type="text" asp-for="Adress" class="form-control" />
+    <br />
+    <label>Mail Us</label>
+    <input type="text" asp-for="Mail" class="form-control" />
+    <br />
+    <label>Telephone</label>
+    <input type="text" asp-for="Telephone" class="form-control" />
+    <br />
+    <label>Social Media</label>
+    <input type="text" asp-for="SocialMediaId" class="form-control" />
+    <br />
+    <label>Website</label>
+    <input type="text" asp-for="WebsiteUrl" class="form-control" />
+    <br />
+    <label>Open Day</label>
+    <input type="datetime" asp-for="OpenDay" class="form-control" />
+    <br />
+    <label>Off Day</label>
+    <input type="datetime" asp-for="OffDay" class="form-control" />
+    <br />
+    <label>Opem Time</label>
+    <input type="time" asp-for="OpenTime" class="form-control" />
+    <br />
+    <label>Close Time</label>
+    <input type="time" asp-for="CloseTime" class="form-control" />
+    <br />
+    <label>Map Url</label>
+    <input type="text" asp-for="MapUrl" class="form-control" />
+    <br />
+    <button class="btn btn-outline-primary"> <i class="fa fa-save"></i> Submit</button>
+</form>

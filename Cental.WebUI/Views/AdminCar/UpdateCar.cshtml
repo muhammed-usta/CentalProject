@@ -1,0 +1,141 @@
+﻿@model UpdateCarDto
+@{
+    ViewData["Title"] = "Update Car";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <!-- Üst Satır: Upload Image, Preview ve Current Image -->
+        <div class="row mb-4">
+            <!-- Solda: Upload Image -->
+            <div class="col-lg-4">
+                <div class="mb-3">
+                    <label for="ImageFile" class="form-label">Upload Image</label>
+                    <input type="file"
+                           id="ImageFile"
+                           name="ImageFile"
+                           accept="image/png, image/jpg, image/jpeg"
+                           class="form-control" />
+                </div>
+            </div>
+            <!-- Ortada: Preview Image -->
+            <div class="col-lg-4 text-center">
+                <div class="mb-3">
+                    <label class="form-label">Preview Image</label>
+                    <img id="imageFilePreview"
+                         src="@Model.ImageUrl"
+                         alt="Image File Preview"
+                         class="img-fluid d-none"
+                         style="max-height: 200px;" />
+                </div>
+            </div>
+            <!-- Sağda: Current Image -->
+            <div class="col-lg-4 text-center">
+                <div class="mb-3">
+                    <label class="form-label">Current Image</label>
+                    <div>
+                        <img src="@(string.IsNullOrEmpty(Model?.ImageUrl) ? Url.Content("~/images/default-car.jpg") : Model.ImageUrl)"
+                             alt="Current Image"
+                             class="img-thumbnail"
+                             style="width: 100px; height: 100px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alt Satır: Diğer Form Alanları -->
+        <div class="row">
+            <!-- Sol Kolon: Brand, Car Model, Model Year, Rental Fee, Seat Count -->
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <input type="hidden" asp-for="CarId" />
+                    <label asp-for="BrandId" class="form-label">Brand</label>
+                    <select asp-items="@ViewBag.brands" asp-for="BrandId" class="form-control">
+                        <option value="">Select the Brand</option>
+                    </select>
+                    <span asp-validation-for="BrandId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ModelName" class="form-label">Car Model</label>
+                    <input type="text" asp-for="ModelName" class="form-control" />
+                    <span asp-validation-for="ModelName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Year" class="form-label">Model Year</label>
+                    <input type="number" asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label">Rental Fee</label>
+                    <input type="number" asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="SeatCount" class="form-label">Seat Count</label>
+                    <input type="number" asp-for="SeatCount" class="form-control" />
+                    <span asp-validation-for="SeatCount" class="text-danger"></span>
+                </div>
+            </div>
+            <!-- Sağ Kolon: Kilometer, Gas Type, Gear Type, Transmission -->
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label asp-for="Kilometer" class="form-label">Kilometer</label>
+                    <input type="number" asp-for="Kilometer" class="form-control" />
+                    <span asp-validation-for="Kilometer" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="GasType" class="form-label">Gas Type</label>
+                    <select asp-items="@ViewBag.gasTypes" asp-for="GasType" class="form-control">
+                        <option value="">Select the gas type</option>
+                    </select>
+                    <span asp-validation-for="GasType" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="GearType" class="form-label">Gear Type</label>
+                    <select asp-items="@ViewBag.gearTypes" asp-for="GearType" class="form-control">
+                        <option value="">Select the gear type</option>
+                    </select>
+                    <span asp-validation-for="GearType" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Transmission" class="form-label">Transmission</label>
+                    <select asp-items="@ViewBag.transmissions" asp-for="Transmission" class="form-control">
+                        <option value="">Select the transmission</option>
+                    </select>
+                    <span asp-validation-for="Transmission" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Butonu -->
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-outline-info">
+                    <i class="fa fa-plus"></i> Update
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Image Preview Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var imageFileInput = document.getElementById("ImageFile");
+        var imageFilePreview = document.getElementById("imageFilePreview");
+
+        if (imageFileInput) {
+            imageFileInput.addEventListener("change", function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        imageFilePreview.src = event.target.result;
+                        imageFilePreview.classList.remove("d-none");
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+    });
+</script>

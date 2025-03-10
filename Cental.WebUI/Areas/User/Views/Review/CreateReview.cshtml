@@ -1,0 +1,38 @@
+﻿@model CreateReviewDto
+@{
+    ViewData["Title"] = "Adding a Car Rating Score";
+    Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="UserId" value="@ViewBag.userId" />
+
+    <div>
+        <label>Select your car: </label>
+        <select class="form-control" asp-items="@ViewBag.CarList" asp-for="CarId">
+            <option selected disabled>Select the vehicle you want to rate.</option>
+        </select>
+    </div>
+    <br />
+
+    <div>
+        <label>Enter your rating: </label>
+        <select class="form-control" asp-for="Rating">
+            <option selected disabled>Make your choice</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+           
+        </select>
+    </div>
+    <br />
+
+
+    <div class="text-center">
+        <button class="btn btn-outline-primary">Submit</button>
+    </div>
+    <br />
+</form>
+

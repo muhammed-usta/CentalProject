@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/Index.cshtml";
+}
+
+<section id="home">
+</section>
+
+<!-- Carousel Start -->
+@await Component.InvokeAsync("_DefaultCarouselComponent")
+<!-- Carousel End -->
+<!-- Features Start -->
+@await Component.InvokeAsync("_DefaultFeatureComponent")
+<!-- Features End -->
+<!-- About Start -->
+@await Component.InvokeAsync("_DefaultAboutComponent")
+<!-- About End -->
+<!-- Fact Counter -->
+@await Component.InvokeAsync("_DefaultCounterComponent")
+<!-- Fact Counter -->
+<!-- Services Start -->
+@await Component.InvokeAsync("_DefaultServiceComponent")
+<!-- Services End -->
+<!-- Car categories Start -->
+@await Component.InvokeAsync("_DefaultCategoriesComponent")
+<!-- Car categories End -->
+<!-- Car Steps Start -->
+@await Component.InvokeAsync("_DefaultProcessComponent")
+<!-- Car Steps End -->
+<!-- Banner Start -->
+@await Component.InvokeAsync("_DefaultBannerComponent")
+<!-- Banner End -->
+<!-- Team Start -->
+@await Component.InvokeAsync("_DefaultManagerComponent")
+<!-- Team End -->
+<!-- Testimonial Start -->
+@await Component.InvokeAsync("_DefaultTestimonialComponent")
+<!-- Testimonial End -->

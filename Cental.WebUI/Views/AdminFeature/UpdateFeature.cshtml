@@ -1,0 +1,23 @@
+﻿@model UpdateFeatureDto
+@{
+    ViewData["Title"] = "Update Feature";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+<form method="post">
+    <input type="hidden" asp-for="FeatureId" />
+
+    <label>Title</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+
+    <label>Description</label>
+    <textarea asp-for="Description" class="form-control"
+              style="width: 100%; height: 150px; font-size: 16px; padding: 10px;"></textarea>
+    <br />
+
+    <label>Icon</label>
+    <input type="text" asp-for="Icon" class="form-control" />
+    <br />
+
+    <button class="btn btn-outline-primary">Update</button>
+</form>

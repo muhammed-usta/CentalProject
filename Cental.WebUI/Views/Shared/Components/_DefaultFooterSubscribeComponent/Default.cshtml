@@ -1,0 +1,35 @@
+﻿@model UserRegisterDto
+@*
+    _DefaultFooterSubscribeComponent
+*@
+
+<form asp-action="SignUp" asp-controller="Register" method="post">
+
+    <div class="card-body">
+        <div class="form-group mb-3">
+            <input type="text" class="form-control" asp-for="FirstName" placeholder="Name" required>
+        </div>
+        <div class="form-group mb-3">
+            <input type="text" class="form-control" asp-for="LastName" placeholder="Surname" required>
+        </div>
+        <div class="form-group mb-3">
+            <input type="text" class="form-control" asp-for="UserName" placeholder="Username" required>
+        </div>
+        <div class="form-group mb-3">
+            <input type="email" class="form-control" asp-for="Email" placeholder="Email" required>
+        </div>
+        <div class="form-group mb-4">
+            <input type="password" class="form-control" asp-for="Password" placeholder="Password" required>
+        </div>
+        <div class="form-group mb-4">
+            <input type="password" class="form-control" asp-for="ConfirmPassword" required placeholder="Verify the password" />
+        </div>
+        <p style="color:red">
+            @Html.ValidationSummary()
+        </p>
+        <div class="text-center">
+            <button class="btn btn-primary btn-block mb-4" type="submit">Register</button>
+        </div>
+        <hr>
+    </div>
+</form>

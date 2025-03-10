@@ -1,0 +1,10 @@
+﻿@model List<ResultSocialMediaDto>
+@*
+    _DefaultFooterSocialComponent
+*@
+@foreach (var item in Model)
+{
+<a class="btn btn-secondary btn-md-square rounded-circle me-3" href="@item.Url"><i class="fab @item.Icon text-white"></i></a>
+    
+}
+

@@ -1,0 +1,52 @@
+﻿
+@model AppUser
+@*
+    _LayoutNavbarComponent
+*@
+
+
+<nav class="pcoded-navbar  ">
+	<div class="navbar-wrapper  ">
+		<div class="navbar-content scroll-div ">
+
+			<div class="">
+				<div class="main-menu-header">
+					<img src="@Model.ImageUrl" alt="User-Profile-Image" style="border-radius:50%;height:50px;width:50px">
+					<div class="user-details">
+						<span>@Model.FirstName @Model.LastName</span>
+						<div id="more-details">User<i class="fa fa-chevron-down m-l-5"></i></div>
+					</div>
+				</div>
+				<div class="collapse" id="nav-user-link">
+					<ul class="list-unstyled">
+						<li class="list-group-item"><a href="/User/Profile/Index"><i class="feather icon-user m-r-5"></i>My Profile Details</a></li>
+						<li class="list-group-item"><a href="/Default/Index"><i class="feather icon-arrow-right m-r-5"></i>Go to site</a></li>
+						<li class="list-group-item"><a href="/Login/Logout"><i class="feather icon-log-out m-r-5"></i>Log out</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<ul class="nav pcoded-inner-navbar ">
+				<li class="nav-item pcoded-menu-caption">
+					<label>Menu</label>
+				</li>
+
+				<li class="nav-item">
+					<a href="/User/Booking/Index" class="nav-link"><span class="pcoded-micon"><i class="fa fa-car"></i></span><span class="pcoded-mtext">Reservations</span></a>
+				</li>
+				<li class="nav-item">
+					<a href="/User/Review/Index" class="nav-link"><span class="pcoded-micon"><i class="fa solid fa-star"></i></span><span class="pcoded-mtext">Review</span></a>
+				</li>
+
+
+
+
+
+
+			</ul>
+
+
+
+		</div>
+	</div>
+</nav>

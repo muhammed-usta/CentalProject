@@ -1,0 +1,35 @@
+﻿@model List<ResultProcessDto>
+@*
+   _DefaultProcessComponent
+*@
+
+@{
+    
+    int count = 00;
+}
+<div class="container-fluid steps py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-5 text-capitalize text-white mb-3">Cental<span class="text-primary"> Process</span></h1>
+            <p class="mb-0 text-white">
+                Our car rental process is fast, easy, and reliable! Choose the most suitable vehicle for you and enjoy your journey. With our wide range of vehicles, affordable prices, and flexible rental options, we offer you the best service.
+
+            </p>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                count++;
+                
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="steps-item p-4 mb-4">
+                    <h4>@item.Title</h4>
+                    <p class="mb-0">@item.Description</p>
+                    <div class="setps-number">@(count.ToString("D2"))</div>
+                </div>
+            </div>
+            }  
+
+        </div>
+    </div>
+</div>

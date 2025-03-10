@@ -1,0 +1,77 @@
+﻿@model UpdateTestimonialDto
+
+@{
+    ViewData["Title"] = "Update Testimonial";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var imageFileInput = document.getElementById("ImageFile");
+        var imagePreview = document.getElementById("imagePreview");
+
+        if (imageFileInput) {
+            imageFileInput.addEventListener("change", function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        imagePreview.src = event.target.result;
+                        imagePreview.classList.remove("d-none");
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+    });
+</script>
+
+<form method="post" enctype="multipart/form-data" class="container p-4 bg-light shadow rounded">
+    <h2 class="mb-4 text-center">Update Testimonial</h2>
+    <input type="hidden" asp-for="TestimonialId" />
+
+    <div class="mb-3">
+        <label for="ImageFile" class="form-label fw-bold">Upload Image</label>
+        <input type="file" id="ImageFile" asp-for="ImageFile" accept="image/png, image/jpg, image/jpeg" class="form-control" />
+        <img id="imagePreview" src="" alt="Image Preview" class="img-fluid mt-2 d-none" style="max-height: 200px;" />
+    </div>
+
+    <div class="mb-3">
+        <label class="fw-bold">Current Image</label>
+        <div>
+            <img src="@Model.ImageUrl" alt="Current Image" class="img-thumbnail" style="width: 100px; height: 100px;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="Name" class="fw-bold">Name</label>
+            <input type="text" asp-for="Name" class="form-control" id="Name" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="Title" class="fw-bold">Title</label>
+            <input type="text" asp-for="Title" class="form-control" id="Title" />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Comment" class="fw-bold">Comment</label>
+        <textarea asp-for="Comment" class="form-control" id="Comment" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="Review" class="fw-bold">Review</label>
+        <select asp-for="Review" class="form-select" id="Review">
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary px-4">
+            <i class="fa fa-save"></i> Submit
+        </button>
+    </div>
+</form>

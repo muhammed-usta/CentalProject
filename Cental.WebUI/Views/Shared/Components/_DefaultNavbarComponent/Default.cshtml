@@ -1,0 +1,100 @@
+﻿
+@*
+    _DefaultNavbarComponent
+*@
+
+<div class="container-fluid nav-bar sticky-top px-0 px-lg-4 py-2 py-lg-0">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a href="/Default/Index/#home" class="navbar-brand p-0">
+                <h1 class="display-6 text-primary"><i class="fas fa-car-alt me-3"></i></i>Cental</h1>
+                <!-- <img src="~/Cental-1.0.0/img/logo.png" alt="Logo"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto py-0">
+                    <a href="/Default/Index/#home" class="nav-item nav-link active">Home</a>
+                    <a href="/Default/Index/#about" class="nav-item nav-link">About</a>
+                    <a href="/Cars/Index/" class="nav-item nav-link">Cars</a>
+                    <a href="/Default/Index/#service" class="nav-item nav-link">Service</a>
+                    <a href="/Contact/Index" class="nav-item nav-link">Contact</a>
+               
+                </div>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">Get Started</a>
+            </div>
+            @{
+                // Kullanıcının rolüne göre ilgili yönlendirmeyi yapalım.
+                string redirectUrl = "";
+                if (User.IsInRole("Manager"))
+                {
+                    redirectUrl = Url.Action("Index", "Booking", new { area = "Manager" });
+                }
+                else if (User.IsInRole("User"))
+                {
+                    redirectUrl = Url.Action("Index", "Booking", new { area = "User" });
+                }
+                else if (User.IsInRole("Admin"))
+                {
+                    redirectUrl = Url.Action("Index", "AdminDashboard", new { area = "" });
+                }
+            }
+
+            @* Kullanıcı Girişi Kontrolü: *@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="profile-icon position-relative d-inline-block ms-3">
+                    <a href="@redirectUrl" class="btn btn-info rounded-pill">
+                        @User.Identity.Name
+                    </a>
+                </div>
+            }
+            else
+            {
+                <!-- Giriş yapılmamışsa, Sign Up butonu -->
+                <div class="profile-icon position-relative d-inline-block ms-3">
+                    <a href="/Register/SignUp" class="position-relative d-inline-block" style="text-decoration: none;">
+                        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-Transparent.png"
+                             alt="Profile Icon"
+                             class="rounded-circle"
+                             style="width: 40px; height: 40px; cursor: pointer;">
+                        <span class="login-button position-absolute text-center">Sign Up</span>
+                    </a>
+                </div>
+            }
+
+
+            <style>
+                .profile-icon {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .login-button {
+                    position: absolute;
+                    left: 50px; /* Başlangıçta sağda beklet */
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: #007bff;
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                .profile-icon:hover .login-button {
+                    opacity: 1;
+                    visibility: visible;
+                    left: 60px; /* Yana doğru kaydırma efekti */
+                }
+            </style>
+
+
+
+        </nav>
+    </div>
+</div>

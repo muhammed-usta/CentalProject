@@ -1,0 +1,55 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "Update Reservation";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="BookingId" />
+
+    <label>Select Your Vehicle</label>
+    <select asp-for="CarId" class="form-control">
+        <option selected>Select your vehicle</option>
+        @foreach (var car in ViewBag.SelectedCarList)
+        {
+            <option value="@car.Value">@car.Text</option>
+        }
+    </select>
+    <br />
+
+    <label>Pick-up Location</label>
+    <span class="fas fa-map-marker-alt"></span>
+    <input asp-for="PickUpLocation" class="form-control" type="text" placeholder="Enter a city or airport">
+    <br />
+
+    <label>Drop-off Location</label>
+    <span class="fas fa-map-marker-alt"></span>
+    <input asp-for="DropOffLocation" class="form-control" type="text" placeholder="Enter a city or airport">
+    <br />
+
+    <label>Pick-up Date</label>
+    <span class="fas fa-calendar-alt"></span>
+    <input asp-for="PickUpDateTime" class="form-control" type="date" min="2024-01-01" />
+    <br />
+
+    <label>Drop-off Date</label>
+    <span class="fas fa-calendar-alt"></span>
+    <input asp-for="DropOffDateTime" class="form-control" type="date" min="2024-01-01" />
+    <br />
+
+    <label>Current Reservation Status</label>
+    <input type="text" asp-for="Status" class="form-control" readonly />
+    <br />
+
+    <label>Change Reservation Status</label>
+    <select asp-for="IsApproved" class="form-control">
+        <option value=true>Approve</option>
+        <option value=null>Pending</option>
+        <option value=false>Reject</option>
+    </select>
+    <br />
+    <div class="text-center">
+        <button class="btn btn-success">Update Reservation</button>
+    </div>
+
+</form>

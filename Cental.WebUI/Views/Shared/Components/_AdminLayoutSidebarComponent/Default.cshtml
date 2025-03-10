@@ -1,0 +1,96 @@
+﻿
+@*
+    //_AdminLayoutSidebarComponent
+*@
+
+<nav class="pcoded-navbar  ">
+    <div class="navbar-wrapper  ">
+        <div class="navbar-content scroll-div ">
+
+            <div class="">
+                <div class="main-menu-header">
+                    <img src="@ViewBag.userImage" alt="User-Profile-Image" style="border-radius:50%;height:50px;width:50px">
+                    <div class="user-details">
+                        <span>@ViewBag.nameSurname</span>
+                        <div id="more-details">Admin<i class="fa fa-chevron-down m-l-5"></i></div>
+                    </div>
+                </div>
+                <div class="collapse" id="nav-user-link">
+                    <ul class="list-unstyled">
+                        <li class="list-group-item"><a href="/AdminProfile/Index"><i class="feather icon-user m-r-5"></i>Profie Info</a></li>
+                        <li class="list-group-item"><a href="/Default/Index" target="_blank"><i class="feather icon-arrow-right m-r-5"></i>Go to Site</a></li>
+                        <li class="list-group-item"><a href="/Login/Logout"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul class="nav pcoded-inner-navbar ">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Dashboard</label>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminDashboard/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                </li>
+            </ul>
+
+            <ul class="nav pcoded-inner-navbar ">
+                <li class="nav-item pcoded-menu-caption">
+                    <label>Menu</label>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/AdminBooking/Index" class="nav-link "><span class="pcoded-micon"><i class="fa fa-calendar"></i></span><span class="pcoded-mtext">Booking</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/AdminAbout/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-info"></i></span><span class="pcoded-mtext">About Us</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminBanner/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-image"></i></span><span class="pcoded-mtext">Banner</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminFeature/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-star"></i></span><span class="pcoded-mtext">Feature</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminBrand/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Brand</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminCar/Index" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa-car"></i></span><span class="pcoded-mtext">Cars</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminContact/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-phone"></i></span><span class="pcoded-mtext">Contact</span></a>
+                </li>
+                <li class="nav-item pcoded-hasmenu">
+                    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Role</span></a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="/Role/Index"><i class="feather icon-user-check"></i>Role</a></li>
+                        <li><a href="/RoleAssign/Index"><i class="feather icon-user-plus"></i>Assign Role</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminProcess/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-layers"></i></span><span class="pcoded-mtext">Process</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminTestimonial/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-message-square"></i></span><span class="pcoded-mtext">Testimonial</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminService/Index" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa-gear"></i></span><span class="pcoded-mtext">Service</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/AdminSocial/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-globe"></i></span><span class="pcoded-mtext">Social</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/AdminMessage/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-mail"></i></span><span class="pcoded-mtext">Messages</span></a>
+                </li>
+              
+
+
+
+            </ul>
+
+
+
+        </div>
+    </div>
+</nav>

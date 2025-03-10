@@ -1,0 +1,33 @@
+﻿@model List<Review>
+@{
+    ViewData["Title"] = "Car Evaluations";
+    Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Selected Car</th>
+        <th>Rating</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    @foreach (var review in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@review.Car.ModelName @review.Car.Brand.BrandName</td>
+            <td>@review.Rating / 5 </td>
+
+            <td><a asp-action="DeleteReview" asp-controller="Review" asp-area="User" asp-route-id="@review.ReviewId" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            <td><a asp-action="UpdateReview" asp-controller="Review" asp-area="User" asp-route-id="@review.ReviewId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
+        </tr>
+    }
+</table>
+<div class="text-center">
+    <a asp-action="CreateReview" asp-controller="Review" asp-area="User" class="btn btn-primary">Create a New Evaluation</a>
+</div>
+

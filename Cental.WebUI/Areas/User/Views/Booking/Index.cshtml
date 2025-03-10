@@ -1,0 +1,60 @@
+﻿@model List<ResultBookingDto>
+
+@{
+    ViewData["Title"] = "Reservations";
+    Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Car Type</th>
+        <th>Pick Up Location</th>
+        <th>PickUpDateTime</th>
+        <th>DropOffLocation</th>
+        <th>DropOffDateTime</th>
+        <th>Status</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+    @foreach (var booking in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@booking.Car.Brand.BrandName @booking.Car.ModelName</td>
+            <td>@booking.PickUpLocation</td>
+            <td>@booking.PickUpDateTime</td>
+            <td>@booking.DropOffLocation</td>
+            <td>@booking.DropOffDateTime</td>
+            <td>
+                @if (booking.IsApproved == true)
+                {
+                    <span class="badge badge-success">Approved</span>  
+                    
+                }
+                else if (booking.IsApproved == false)
+                {
+                    <span class="badge badge-danger">Declined</span>
+                }
+                else
+                {
+                    <span class="badge badge-warning">On hold</span>
+                }
+            </td>
+
+            <td><a asp-action="DeleteReservation" asp-controller="Booking" asp-area="User" asp-route-id="@booking.BookingId" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            <td><a asp-action="UpdateReservation" asp-controller="Booking" asp-area="User" asp-route-id="@booking.BookingId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
+        </tr>
+        
+    }
+
+</table>
+<div class="text-center">
+    <a asp-action="CreateReservation" asp-controller="Booking" asp-area="User" class="btn btn-primary">Create a New Reservation</a>
+</div>
+
+

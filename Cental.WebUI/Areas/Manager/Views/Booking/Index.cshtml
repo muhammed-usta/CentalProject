@@ -1,0 +1,72 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Name Surname</th>
+        <th>Selected Car</th>
+        <th>Pickup Location</th>
+        <th>Drop-off Location</th>
+        <th>Pickup Date</th>
+        <th>Drop-off Date</th>
+        <th>Crated at</th>
+        <th>Status</th>
+        <th>Approve / Decline / Put On Hold</th>
+        <th>Delete</th>
+        <th>Update</th>
+
+    </tr>
+
+    @foreach (var booking in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@booking.User.FirstName @booking.User.LastName</td>
+            <td>@booking.Car.Brand.BrandName @booking.Car.ModelName </td>
+            <td>@booking.PickUpLocation</td>
+            <td>@booking.DropOffLocation</td>
+            <td>@booking.PickUpDateTime.ToShortDateString()</td>
+            <td>@booking.DropOffDateTime.ToShortDateString()</td>
+            <td>@booking.CreatedAt</td>
+            <td>
+                @if (booking.IsApproved == true)
+                {
+                    <span class="badge badge-success">Approved</span>
+                }
+                else if (booking.IsApproved == false)
+                {
+                    <span class="badge badge-danger">Declined</span>
+                }
+                else
+                {
+                    <span class="badge badge-warning">On hold</span>
+
+                }
+            </td>
+
+
+            <td>
+                <a class="btn btn-outline-success" asp-action="ApproveReservation" asp-controller="Booking" asp-route-id="@booking.BookingId">Approve</a>
+                <a class="btn btn-outline-danger" asp-action="DeclineReservation" asp-controller="Booking" asp-route-id="@booking.BookingId">Decline</a>
+                <a class="btn btn-outline-warning" asp-action="WaitingReservation" asp-controller="Booking" asp-route-id="@booking.BookingId">Put on hold</a>
+            </td>
+
+
+            <td><a asp-action="DeleteReservation" asp-controller="Booking" asp-area="Manager" asp-route-id="@booking.BookingId" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+            <td><a asp-action="UpdateReservation" asp-controller="Booking" asp-area="Manager" asp-route-id="@booking.BookingId" class="btn btn-info"><i class="fa fa-pen"></i></a></td>
+        </tr>
+    }
+</table>
+<div class="text-center">
+    <a asp-action="CreateReservation" asp-controller="Booking" asp-area="Manager" class="btn btn-primary">Create a New Reservation</a>
+</div>
+
+

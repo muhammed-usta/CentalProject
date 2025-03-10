@@ -1,0 +1,74 @@
+﻿@model ResultContactDto
+@*
+  _DefaultFooterComponent
+*@
+
+<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <div class="footer-item">
+                        <h4 class="text-white mb-4">Would you like to become a member?</h4>
+                       
+                    </div>
+                    <!-- Button -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                        Register
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="subscribeModalLabel">Register</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @await Component.InvokeAsync("_DefaultFooterSubscribeComponent", new UserRegisterDto { })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a href="/Default/Index/#about"><i class="fas fa-angle-right me-2"></i> About</a>
+                    <a href="/Default/Index/#service"><i class="fas fa-angle-right me-2"></i> Service</a>
+                    <a href="/Cars/Index"><i class="fas fa-angle-right me-2"></i> Cars</a>
+                    <a href="/Contact/Index"><i class="fas fa-angle-right me-2"></i> Contact</a>             
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Business Hours</h4>
+                    <div class="mb-3">
+                        <h6 class="text-muted mb-0">Mon - Friday:</h6>
+                        <p class="text-white mb-0">
+                            @(Model.OpenTime.HasValue ? Model.OpenTime.Value.ToString(@"hh\:mm") : "00:00") am to @(Model.CloseTime.HasValue ? Model.CloseTime.Value.ToString(@"hh\:mm") : "00:00") PM PM
+                        </p>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <h6 class="text-muted mb-0">Vacation:</h6>
+                        <p class="text-white mb-0">All @Model.OffDay is our vacation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <a href="#"><i class="fa fa-map-marker-alt me-2"></i> @Model.Adress</a>
+                    <a href="mailto:@Model.Mail"><i class="fas fa-envelope me-2"></i> @Model.Mail</a>
+                    <a href="tel:@Model.Telephone"><i class="fas fa-phone me-2"></i> @Model.Telephone</a>
+                    <div class="d-flex">
+                        @await Component.InvokeAsync("_DefaultFooterSocialComponent")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

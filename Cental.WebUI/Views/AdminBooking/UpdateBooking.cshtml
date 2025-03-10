@@ -1,0 +1,87 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "Update Booking";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="BookingId" />
+    <label>Select Your User</label>
+
+    <select asp-for="UserId" class="form-control">
+        <option selected>Select the user you want to create a reservation for.</option>
+        @foreach (var user in ViewBag.UserSelectedList)
+        {
+            <option value="@user.Value">@user.Text</option>
+        }
+    </select>
+    <br />
+
+    <select asp-for="CarId" class="form-control">
+        <option selected>Select Your Vehicle</option>
+        @foreach (var car in ViewBag.SelectedCarList)
+        {
+            <option value="@car.Value">@car.Text</option>
+        }
+    </select>
+    <br />
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <label>Pick Up Location</label>
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-map-marker-alt"></span>
+                    <span class="ms-1">Pick Up</span>
+                </div>
+                <select class="form-select" asp-for="PickUpLocation" asp-items="ViewBag.Cities">
+                    <option value="">Select Pick-Up Location</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label>Drop Off Location</label>
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-map-marker-alt"></span>
+                    <span class="ms-1">Drop Off</span>
+                </div>
+                <select class="form-select" asp-for="DropOffLocation" asp-items="ViewBag.Cities">
+                    <option value="">Select Drop-Off Location</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <label>Pick-up Date</label>
+    <span class="fas fa-calendar-alt"></span>
+    <input asp-for="PickUpDateTime" class="form-control" type="datetime-local" min="2024-01-01" value="2024-01-01" />
+    <br />
+
+    <label>Drop-off Date</label>
+    <span class="fas fa-calendar-alt"></span>
+    <input asp-for="DropOffDateTime" class="form-control" type="datetime-local" min="2024-01-01" value="2024-01-01" />
+    <br />
+
+    <label>Cuurrent Booking Status</label>
+    <input type="text" asp-for="Status" class="form-control" readonly />
+    <br />
+
+    <label>Change Booking Status</label>
+    <select asp-for="IsApproved" class="form-control">
+        <option value=true>Approved</option>
+        <option value=null>On hold</option>
+        <option value=false>Declined</option>
+    </select>
+    <br />
+    <div class="text-center">
+        <button class="btn btn-success">Update Booking</button>
+    </div>
+
+</form>
+
+
+
+

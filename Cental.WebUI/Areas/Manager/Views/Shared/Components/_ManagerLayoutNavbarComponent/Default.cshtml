@@ -1,0 +1,47 @@
+﻿@model AppUser
+@*
+    _LayoutNavbarComponent
+*@
+<nav class="pcoded-navbar  ">
+	<div class="navbar-wrapper  ">
+		<div class="navbar-content scroll-div ">
+
+			<div class="">
+				<div class="main-menu-header">
+					<img src="@Model.ImageUrl" alt="User-Profile-Image" style="border-radius:50%;height:50px;width:50px">
+					<div class="user-details">
+						<span>@Model.FirstName @Model.LastName</span>
+						<div id="more-details">Manager<i class="fa fa-chevron-down m-l-5"></i></div>
+					</div>
+				</div>
+				<div class="collapse" id="nav-user-link">
+					<ul class="list-unstyled">
+						<li class="list-group-item"><a href="/Manager/Profile/Index"><i class="feather icon-user m-r-5"></i>Profile Information</a></li>
+						<li class="list-group-item"><a href="/Default/Index"><i class="feather icon-arrow-right m-r-5"></i>Go to Site</a></li>
+						<li class="list-group-item"><a href="/Login/Logout"><i class="feather icon-log-out m-r-5"></i>Log Out</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<ul class="nav pcoded-inner-navbar ">
+				<li class="nav-item pcoded-menu-caption">
+					<label>Menu</label>
+				</li>
+				<li class="nav-item">
+					<a href="/Manager/Booking/Index" class="nav-link "><span class="pcoded-micon"><i class="fa fa-car"></i></span><span class="pcoded-mtext">Booking</span></a>
+				</li>
+				<li class="nav-item">
+					<a href="/Manager/MySocial/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-globe"></i></span><span class="pcoded-mtext">Social Media</span></a>
+				</li>
+
+
+
+
+
+			</ul>
+
+
+
+		</div>
+	</div>
+</nav>

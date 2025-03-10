@@ -1,0 +1,14 @@
+﻿@model List<ResultSocialMediaDto>
+@*
+  _ContactSocialPartialComponent
+*@
+<div class="col-12 col-xl-1 wow fadeInUp" data-wow-delay="0.3s">
+    <div class="d-flex flex-xl-column align-items-center justify-content-center">
+        @foreach (var social in Model)
+        {
+            <a class="btn btn-xl-square btn-light rounded-circle mb-0 mb-xl-4 me-4 me-xl-0" href="@social.Url" target="_blank"><i class="@social.Icon"></i></a>
+
+        }
+
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model CreateProcessDto
+@{
+    ViewData["Title"] = "Create Process";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post">
+    <label>Title</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <br />
+    <label>Description</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+    
+    <button class="btn btn-outline-primary"> <i class="fa fa-save"></i> Submit</button>
+</form>
+
+
+
+

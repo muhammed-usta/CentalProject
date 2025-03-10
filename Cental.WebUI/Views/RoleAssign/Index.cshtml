@@ -1,0 +1,44 @@
+﻿@model List<ResultUserDto>
+@{
+    ViewData["Title"] = "User List";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+
+@{
+    int count = 0;
+}
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Name Surname</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Assign a Role</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.FullName</td>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>
+                @foreach (var role in item.Roles)
+                {
+                    <span class="badge badge-info">@role</span>  <br />
+                }
+            </td>
+
+
+            <td><a asp-action="AssignRole" asp-route-id="@item.Id" class="btn btn-info"><i class="fa fa-pen"></i>  </a> Assign a Role </td>
+        </tr>
+    }
+</table>
+

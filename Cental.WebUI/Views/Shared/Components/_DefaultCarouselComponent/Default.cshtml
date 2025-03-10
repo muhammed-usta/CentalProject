@@ -1,0 +1,145 @@
+﻿@model Booking
+<div class="header-carousel position-relative">
+    <!-- Carousel -->
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true" aria-label="First slide"></li>
+            <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <!-- İlk Slide -->
+            <div class="carousel-item active">
+                <img src="~/images/carousel-2.jpg" class="img-fluid w-100" alt="First slide" />
+            </div>
+            <!-- İkinci Slide -->
+            <div class="carousel-item">
+                <img src="~/images/secondPhoto.jpg" class="img-fluid w-100" alt="Second slide" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Booking Form Overlay -->
+    <div class="booking-form-overlay position-absolute" style="top: 20%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1200px; z-index: 1000;">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 fadeInLeft animated">
+                    <div class="bg-secondary rounded p-5">
+                        <h4 class="text-white mb-4">CONTINUE CAR RESERVATION</h4>
+                        <form asp-action="BookingCar" asp-controller="Default" method="post">
+                            @Html.AntiForgeryToken()
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <select class="form-select" asp-for="CarId" asp-items="ViewBag.CarTypes">
+                                        <option value="">Select Your Car type</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
+                                        </div>
+                                        <select class="form-select" asp-for="PickUpLocation" asp-items="ViewBag.Cities">
+                                            <option value="">Select Pick-Up Location</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <a href="#" class="text-start text-white d-block mb-2">Need a different drop-off location?</a>
+                                    <div class="input-group">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Drop off</span>
+                                        </div>
+                                        <select class="form-select" asp-for="DropOffLocation" asp-items="ViewBag.Cities">
+                                            <option value="">Select Drop-Off Location</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="fas fa-calendar-alt"></span> <span class="ms-1">Pick Up</span>
+                                        </div>
+                                        <input class="form-control" asp-for="PickUpDateTime" type="datetime-local">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="fas fa-calendar-alt"></span> <span class="ms-1">Drop off</span>
+                                        </div>
+                                        <input class="form-control" asp-for="DropOffDateTime" type="datetime-local">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button onclick="rezervation()" class="btn btn-light w-100 py-2">Book Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-flex fadeInRight animated">
+                    <div class="text-start">
+                        <h1 class="display-5 text-white">Get 15% off your rental Plan your trip now</h1>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.form-select').each(function() {
+            var maxOptions = 5;
+            var optionHeight = $(this).find('option').height();
+            var totalHeight = optionHeight * maxOptions;
+            $(this).on('focus', function() {
+                $(this).css('max-height', totalHeight);
+                $(this).css('overflow-y', 'auto');
+            });
+            $(this).on('blur', function() {
+                $(this).css('max-height', 'none');
+                $(this).css('overflow', 'visible');
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const isAuthenticated = @ViewBag.IsUserAuthenticated.ToString().ToLower();
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!isAuthenticated) {
+                Swal.fire({
+                    title: "You Need to Log In",
+                    text: "Please log in before making a reservation.",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+                return;
+            }
+            Swal.fire({
+                title: "Would you like to submit your reservation?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, submit",
+                cancelButtonText: "No, cancel"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Successful!",
+                        text: "Your reservation has been received, we will get back to you as soon as possible.",
+                        icon: "success"
+                    }).then(() => {
+                        event.target.submit();
+                    });
+                }
+            });
+        });
+    });
+</script>
