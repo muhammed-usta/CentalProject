@@ -56,6 +56,7 @@ Admin paneli, sistem yöneticilerinin platformun tüm kontrolünü elinde bulund
 
 🏛 MVC mimarisi ve N-Tier (Katmanlı) yapı
 
+![Ekran Görüntüsü (77)](https://github.com/user-attachments/assets/39d54021-ff00-4f28-b742-799ebf311265)
 ![Ekran Görüntüsü (78)](https://github.com/user-attachments/assets/09f52466-32e3-4c0c-b629-3ece5ac6dc37)
 ![Ekran Görüntüsü (79)](https://github.com/user-attachments/assets/20374ce0-6237-4b6b-bf73-f54f86404ec3)
 ![Ekran Görüntüsü (80)](https://github.com/user-attachments/assets/46295e67-384f-47c9-93b0-b5b07fed3fe9)
@@ -70,5 +71,5 @@ Admin paneli, sistem yöneticilerinin platformun tüm kontrolünü elinde bulund
 ![Ekran Görüntüsü (89)](https://github.com/user-attachments/assets/b74b138e-a658-453b-803a-3c11f66f32d8)
 ![Ekran Görüntüsü (90)](https://github.com/user-attachments/assets/a80b978f-b296-460e-a90d-319f4455d4e4)
 ![Ekran Görüntüsü (91)](https://github.com/user-attachments/assets/074ad088-c7c5-41c5-a4fb-1e92c613efc1)
-![Ekran Görüntüsü (77)](https://github.com/user-attachments/assets/39d54021-ff00-4f28-b742-799ebf311265)
+
 
